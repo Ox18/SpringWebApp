@@ -8,5 +8,5 @@ import org.springframework.test.annotation.Rollback;
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 public class UserRepositoryTests {
-    
+
 }
