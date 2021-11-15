@@ -20,7 +20,7 @@ public class UserRepositoryTests {
     @Test
     public void testAddNew(){
         User user = new User();
-        user.setEmail("test2@gmail.com");
+        user.setEmail("test22@gmail.com");
         user.setPassword("wilmerdelgado");
         user.setFirstName("Wilmer");
         user.setLastName("Delgado");
