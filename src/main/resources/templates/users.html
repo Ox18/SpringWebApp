@@ -7,9 +7,9 @@
 </head>
 <body>
 <div class="container-fluid text-center">
-    <div><h2>Manage users</h2></div>
+    <div><h2>Administrar empleados</h2></div>
     <div class="m-2">
-        <a class="h3" th:href="@{/users/new}">Add new user</a>
+        <a class="h3" th:href="@{/users/new}">Agregar nuevo empleado</a>
     </div>
     <div th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
@@ -18,11 +18,11 @@
         <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
-                <th>ID</th>
-                <th>E-mail</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Enabled</th>
+                <th>Codigo</th>
+                <th>Nombre completo</th>
+                <th>Correo</th>
+                <th>Activo</th>
+                <th></th>
                 <th></th>
             </tr>
             </thead>
@@ -30,13 +30,14 @@
                 <th:block th:each="user: ${listUsers}">
                     <tr>
                         <td>[[${user.id}]]</td>
+                        <td>[[${user.firstName}]] [[${user.lastName}]]</td>
                         <td>[[${user.email}]]</td>
-                        <td>[[${user.firstName}]]</td>
-                        <td>[[${user.lastName}]]</td>
-                        <td>[[${user.enabled}]]</td>
+                        <td th:text="${user.enabled} ? 'SI' : 'NO'" />
                         <td>
-                            <a class="h4 mr-3" th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
-                            <a class="h4" th:href="@{'/users/delete/' + ${user.id}}">Delete</a>
+                            <a th:href="@{'/users/edit/' + ${user.id}}">Editar</a>
+                        </td>
+                        <td>
+                            <a th:href="@{'/users/delete/' + ${user.id}}">Eliminar</a>
                         </td>
                     </tr>
                 </th:block>

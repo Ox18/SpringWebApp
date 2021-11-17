@@ -25,14 +25,14 @@ public class UserController {
     @GetMapping("/users/new")
     public String showNewForm(Model model){
         model.addAttribute("user", new User());
-        model.addAttribute("pageTitle", "Add New User");
+        model.addAttribute("pageTitle", "Agregar nuevo empleado");
         return "user_form";
     }
 
     @PostMapping("/users/save")
     public String saveUser(User user, RedirectAttributes ra){
         service.save(user);
-        ra.addFlashAttribute("message", "El usuario ha sido agregado satisfactoriamente.");
+        ra.addFlashAttribute("message", "El empleado ha sido agregado satisfactoriamente.");
         return "redirect:/users";
     }
 
@@ -41,7 +41,7 @@ public class UserController {
         try{
             User user = service.get(id);
             model.addAttribute("user", user);
-            model.addAttribute("pageTitle", "Edit User (ID: " + id + " )");
+            model.addAttribute("pageTitle", "Editar empleado (ID: " + id + " )");
             return "user_form";
         }catch(UserNotFoundException e){
             ra.addFlashAttribute("message", e.getMessage());
